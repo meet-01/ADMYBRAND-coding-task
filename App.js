@@ -19,14 +19,10 @@ form.addEventListener("change", function (e) {
 });
 
 title.addEventListener("change", function (e) {
-  e.preventDefault();
-
   formvalues.title = title.value;
 });
 
 body.addEventListener("change", function (e) {
-  e.preventDefault();
-
   formvalues.body = body.value;
 });
 
@@ -53,7 +49,8 @@ const fetchedUsers = async () => {
   if (response.ok) {
     return data;
   } else {
-    alert("failed HTTPs request for fetching users");
+    alert(`failed HTTPs request for fetching users, error: ${response.status}`);
+    return [];
   }
 };
 
@@ -71,8 +68,6 @@ const updateUsers = async () => {
 };
 
 updateUsers();
-
-//removing id
 
 //fteching json data for creating post
 
@@ -92,6 +87,6 @@ const createPost = async ({ title = "", body = "", userId = 0 }) => {
   if (response.ok) {
     return data;
   } else {
-    alert("failed HTTPs request for creating Post");
+    alert(`failed HTTPs request for creating Post,error : ${response.status}`);
   }
 };
